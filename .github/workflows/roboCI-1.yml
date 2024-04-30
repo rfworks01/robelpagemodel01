@@ -44,7 +44,8 @@ jobs:
     #   python -m robot --argumentfile arg_file/arg_gitaction.robot
     - name: Generate Matrix Report
       run: |
-        robotmetrics -M matrix/index.html --inputpath reports  --output output.xml
+        robotmetrics -M reports/index.html --inputpath reports  --output output.xml
+    #   robotmetrics -M matrix/index.html --inputpath reports  --output output.xml
     #   Single deploy job since we're just deploying
   
     - name: Deploy to GitHub Pages
