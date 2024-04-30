@@ -42,12 +42,20 @@ jobs:
     
 
     #   python -m robot --argumentfile arg_file/arg_gitaction.robot
-    # - name: Generate Matrix Report
-    #   run: |
-    #     robotmetrics -M reports/metrix_report.html --inputpath reports  --output output.xml
-    #     # Single deploy job since we're just deploying
+    - name: Generate Matrix Report
+      run: |
+        robotmetrics -M matrix/metrix_report.html --inputpath reports  --output output.xml
+    #   Single deploy job since we're just deploying
   
-
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        # Build output to publish to the `gh-pages` branch:
+        publish_dir: matrix/
+        publish_branch: gh-pages
+        exclude_assets: '.github,exclude-file1,exclude-file2'
+   
     # - name: Checkout
     #   uses: actions/checkout@v4
       
